@@ -1,2 +1,3 @@
+docker-compose down --remove-orphans
 docker-compose up -d
-docker exec -it docker-compose-devops-1 /bin/bash
+docker exec -it devops18.04 /bin/bash

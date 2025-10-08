@@ -8,9 +8,15 @@ services:
     stdin_open: true
     tty: true
     #command: /bin/bash -c "groupadd -g 1000 jcervera && useradd -u 1000 -g jcervera -m jcervera && /bin/bash&"
+    command: >
+      /bin/sh -c "
+        chmod 755 /Keys &&
+        find /Keys/ -type f -exec chmod 644 {} \; &&
+        exec /bin/bash
+      "
     volumes:
-      - ${HOME}/Desktop/pem:/Keys
-      - ${HOME}/Projects:/Projects
+      - /mnt/c/Users/JorgeCerveraGarcia/Projects:/Projects
+      - /home/jorge/pem:/Keys
     network_mode: host
     ulimits:
       nproc: 65535
