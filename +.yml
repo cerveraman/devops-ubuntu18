@@ -1,0 +1,19 @@
+services:
+  devops-18.04:
+    image: cerveraman/devops-u18.04:v3.1
+    container_name: devops18.04
+      #user: "1000"
+    working_dir: "/home/jcervera"
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    #command: /bin/bash -c "groupadd -g 1000 jcervera && useradd -u 1000 -g jcervera -m jcervera && /bin/bash&"
+    volumes:
+      - ${HOME}/Desktop/pem:/Keys
+      - ${HOME}/Projects:/Projects
+    network_mode: host
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 20000
+        hard: 40000
